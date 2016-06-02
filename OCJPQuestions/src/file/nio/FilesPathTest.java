@@ -8,13 +8,14 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
+import java.util.Iterator;
 import java.util.Set;
 
 public class FilesPathTest {
 	// C:\\Libraries\\Hola\\abc.txt
 	public static void main(String[] args) {
 		try {
-			new FilesPathTest().b();
+			new FilesPathTest().c();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,8 +40,11 @@ public class FilesPathTest {
 	}
 	
 	public void c() throws IOException{
-		Path path = Paths.get("C:\\Libraries\\Hola\\test1.txt");
-		DirectoryStream ds = Files.newDirectoryStream(path);
+		Path path = Paths.get("C:\\Libraries\\Hola");
+		DirectoryStream<Path> ds = Files.newDirectoryStream(path);
+		for(Path p: ds){
+			System.out.println(p);
+		}
 	}
 
 }
