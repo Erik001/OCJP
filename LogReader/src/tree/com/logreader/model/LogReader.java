@@ -49,8 +49,6 @@ public class LogReader {
 			System.exit(0);
 			
 		}
-		// logList =
-		// lr.getDirectoryListing(Paths.get("\\\\acn052memts01\\newprocessor\\Retail\\Audit"));
 		logList = lr.getDirectoryListing(Paths.get(args[0]));
 		DateTime timeNow = DateTime.now();
 		try {
@@ -79,7 +77,7 @@ public class LogReader {
 
 	public Content getFileContent(Path filePath) {
 		try (Stream<String> lines = Files.lines(filePath, Charset.forName("Cp1252"))) {
-			Optional<String> generadaExito = lines.filter(s -> s.contains("Entrega generada con éxito")).findFirst();
+			Optional<String> generadaExito = lines.filter(s -> s.contains("Entrega generada con Ã©xito")).findFirst();
 			if (generadaExito.isPresent()) {
 				int posIni = generadaExito.toString().lastIndexOf(" = ");
 				int posFin = generadaExito.toString().lastIndexOf(" ---");
